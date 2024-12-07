@@ -17,6 +17,15 @@ export interface SupportTicket {
   updatedAt: string;
   attachments?: string[];
   comments: TicketComment[];
+  content?: string;
+  resources?: Array<{
+    title: string;
+    url: string;
+  }>;
+  checkpoints?: Array<{
+    title: string;
+    completed: boolean;
+  }>;
 }
 
 export interface TicketComment {
@@ -36,10 +45,24 @@ export interface CreateTicketData {
   attachments?: File[];
 }
 
+export interface TrainingTopic {
+  id: string;
+  title: string;
+  videoId: string;
+}
+
 export interface UpdateTicketData {
   status?: TicketStatus;
   priority?: TicketPriority;
   assignedTo?: string;
+export interface TrainingModule {
+  id: string;
+  title: string;
+  description: string;
+  topics: TrainingTopic[];
+  duration: string;
+  level: 'basic' | 'intermediate' | 'advanced';
+  completionRate?: number;
 }
 
 export interface CreateCommentData {
